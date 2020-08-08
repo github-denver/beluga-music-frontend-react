@@ -1,0 +1,181 @@
+/* root
+---------- ---------- ---------- ---------- ---------- */
+#root {
+  height: 100%;
+}
+
+/* App
+---------- ---------- ---------- ---------- ---------- */
+.App {
+  height: 100%;
+}
+
+.App .outer_cell {
+  width: 100%;
+}
+
+/* reset
+---------- ---------- ---------- ---------- ---------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  color: #333;
+}
+
+fieldset,
+img {
+  border: 0 none;
+}
+
+img {
+  border: 0 none;
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* invisible
+---------- ---------- ---------- ---------- ---------- */
+.invisible {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  line-height: 0;
+  text-indent: -9999px;
+}
+
+/* outer_cell
+---------- ---------- ---------- ---------- ---------- */
+.outer_cell {
+  display: table;
+  height: 100%;
+}
+
+.inner_cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* group_half
+---------- ---------- ---------- ---------- ---------- */
+.group_half {
+  font-size: 0;
+}
+
+.inner_half {
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+/* inner_global
+---------- ---------- ---------- ---------- ---------- */
+.inner_global {
+  position: relative;
+  min-width: 320px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* icon
+---------- ---------- ---------- ---------- ---------- */
+.icon_global {
+  display: inline-block;
+  overflow: hidden;
+  font-size: 1px;
+  line-height: 0;
+  color: transparent;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+.icon_player {
+  background-image: url(/images/common/icon_player.png);
+  background-size: 250px auto;
+}
+
+/* button
+---------- ---------- ---------- ---------- ---------- */
+.button_global {
+  border: 0 none;
+  box-sizing: border-box;
+  line-height: 1;
+  background-color: transparent;
+  vertical-align: top;
+  cursor: pointer;
+}
+
+.button_mute .icon_player {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-position: -35px 0;
+}
+
+.button_play .icon_player {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-position: -140px 0;
+}
+
+.button_pause .icon_player {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-position: -105px 0;
+}
+
+.button_previous .icon_player {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-position: -175px 0;
+}
+
+.button_next .icon_player {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-position: -210px 0;
+}
+
+/* @keyframes
+  ---------- ---------- ---------- ---------- ---------- */
+@keyframes effectSpin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
