@@ -12,6 +12,7 @@ const loading = handleActions(
   {
     [START_LOADING]: (state, action) => {
       console.log('modules → [loading.js] → action: ', action)
+      console.log('')
 
       return {
         ...state,
