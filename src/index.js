@@ -14,8 +14,8 @@ import { createStore, compose, applyMiddleware } from 'redux'
 // import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer, { rootSaga } from './modules'
 import createSagaMiddleware from 'redux-saga'
-import { tempSetUser, check } from './modules/user'
-import Cookies from 'js-cookie'
+// import { tempSetUser, check } from './modules/user'
+// import Cookies from 'js-cookie'
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -37,7 +37,7 @@ const enhancer = composeEnhancers(
 // const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)))
 const store = createStore(rootReducer, enhancer)
 
-function user() {
+/* function user() {
   try {
     const user = localStorage.getItem('user')
     // console.log('[index.js] → user: ', user)
@@ -60,11 +60,11 @@ function user() {
   } catch (error) {
     console.error(error)
   }
-}
+} */
 
 sagaMiddleware.run(rootSaga)
 
-user()
+// user()
 
 ReactDOM.render(
   <Provider store={store}>

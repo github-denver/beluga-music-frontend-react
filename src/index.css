@@ -134,6 +134,10 @@ a {
   background-position: -35px 0;
 }
 
+.button_mute.disabled .icon_player {
+  background-position: 0 0;
+}
+
 .button_play .icon_player {
   display: block;
   width: 30px;

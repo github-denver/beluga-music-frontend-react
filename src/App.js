@@ -6,7 +6,7 @@ import Index from './pages/Index'
 function App() {
   return (
     <div className="App">
-      <Route component={Index} path={['/', '/beluga']} exact />
+      <Route component={Index} path={['/']} exact />
     </div>
   )
 }
