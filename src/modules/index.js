@@ -3,12 +3,12 @@ import { all } from 'redux-saga/effects'
 import loading from './loading'
 // import authorization, { authorizationSaga } from './authorization'
 // import user, { userSaga } from './user'
-import playlist, { playlistSaga } from './playlist'
+import musicRead, { musicReadSaga } from './music/read'
 
-const rootReducer = combineReducers({ loading, playlist })
+const rootReducer = combineReducers({ loading, musicRead })
 
 export function* rootSaga() {
-  yield all([playlistSaga()])
+  yield all([musicReadSaga()])
 }
 
 export default rootReducer

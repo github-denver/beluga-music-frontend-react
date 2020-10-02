@@ -7,7 +7,7 @@ Styled.player = styled.div``
 
 const Player = (props) => {
   const { attribute } = props
-  console.log('attribute: ', attribute)
+  console.log('components → [Player.js] → attribute: ', attribute)
   console.log('')
 
   if (attribute.error) {
@@ -42,18 +42,19 @@ const Player = (props) => {
     return <p>목록이 존재하지 않습니다.</p>
   }
 
-  const audio = new Audio()
+  let audio = new Audio()
   audio.src = `/music/${attribute.list.upload2}`
   console.log('components → [Player.js] → audio: ', audio)
 
-  const play = () => {
-    const album = document.querySelector('.group_album')
+  const album = document.querySelector('.group_album')
+  const play = document.querySelector('.button_play')
+  const pause = document.querySelector('.button_pause')
+  const mute = document.querySelector('.button_mute')
+  const progress = document.querySelector('.progress_current')
+
+  const played = () => {
     album.classList.add('active')
-
-    const play = document.querySelector('.button_play')
     play.classList.remove('active')
-
-    const pause = document.querySelector('.button_pause')
     pause.classList.add('active')
 
     pause.focus()
@@ -61,14 +62,9 @@ const Player = (props) => {
     audio.play()
   }
 
-  const pause = () => {
-    const album = document.querySelector('.group_album')
+  const paused = () => {
     album.classList.remove('active')
-
-    const play = document.querySelector('.button_play')
     play.classList.add('active')
-
-    const pause = document.querySelector('.button_pause')
     pause.classList.remove('active')
 
     play.focus()
@@ -77,7 +73,6 @@ const Player = (props) => {
   }
 
   const muted = () => {
-    const mute = document.querySelector('.button_mute')
     mute.classList.toggle('disabled')
 
     mute.querySelector('.icon_global').textContent = audio.muted ? '소리 끄기' : '소리 켜기'
@@ -88,30 +83,49 @@ const Player = (props) => {
   audio.ontimeupdate = function () {
     const progress = document.querySelector('.progress_current')
 
-    const loaded = (100 * audio.buffered.end(0)) / audio.duration
-    console.log('components → [Player.js] → loaded: ', loaded)
+    // const loaded = (100 * audio.buffered.end(0)) / audio.duration
+    // console.log('components → [Player.js] → loaded: ', loaded)
 
     const played = (100 * audio.currentTime) / audio.duration
     console.log('components → [Player.js] → played: ', played)
+    console.log('')
 
     // progress.style.width = Math.floor(played) + '%'
     progress.style.width = played + '%'
   }
 
   audio.onended = function () {
-    const album = document.querySelector('.group_album')
     album.classList.remove('active')
-
-    const play = document.querySelector('.button_play')
     play.classList.add('active')
-
-    const pause = document.querySelector('.button_pause')
     pause.classList.remove('active')
 
-    const progress = document.querySelector('.progress_current')
     progress.removeAttribute('style')
 
     play.focus()
+  }
+
+  const previous = () => {
+    album.classList.remove('active')
+    play.classList.add('active')
+    pause.classList.remove('active')
+
+    play.focus()
+
+    audio.pause()
+
+    attribute.event.decrease()
+  }
+
+  const next = () => {
+    album.classList.remove('active')
+    play.classList.add('active')
+    pause.classList.remove('active')
+
+    play.focus()
+
+    audio.pause()
+
+    attribute.event.increase()
   }
 
   return (
@@ -142,19 +156,19 @@ const Player = (props) => {
         </div>
 
         <div className="group_button">
-          <button type="button" className="button_global button_common button_play active" onClick={play}>
+          <button type="button" className="button_global button_common button_play active" onClick={played}>
             <span className="icon_global icon_player">재생</span>
           </button>
 
-          <button type="button" className="button_global button_common button_pause" onClick={pause}>
+          <button type="button" className="button_global button_common button_pause" onClick={paused}>
             <span className="icon_global icon_player">일시정지</span>
           </button>
 
-          <button type="button" className="button_global button_common button_previous">
+          <button type="button" className="button_global button_common button_previous" onClick={previous}>
             <span className="icon_global icon_player">이전 곡 듣기</span>
           </button>
 
-          <button type="button" className="button_global button_common button_next">
+          <button type="button" className="button_global button_common button_next" onClick={next}>
             <span className="icon_global icon_player">다음 곡 듣기</span>
           </button>
         </div>
